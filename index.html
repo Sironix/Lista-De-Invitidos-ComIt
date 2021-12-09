@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="Bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="Jquery/jquery-3.6.0.min.js"></script>
+  <script src="js/aplicacion.js"></script>
+  <title>Lista De Invitados</title>
+</head>
+
+<body style="background-color: rgb(202, 202, 202);">
+<!-- Tab links -->
+<div class="tab gradient1" style="background-color: white;width:100%">
+  <button class="tablinks border_white" onclick="openTab(event, 'TabLista')">Lista</button>
+  <button class="tablinks border_white" onclick="openTab(event, 'TabAñadir')">Añadir usuario</button>
+  <button class="tablinks border_white" onclick="openTab(event, 'TabEliminar')">Eliminar usuario</button>
+  <button class="tablinks border_white" onclick="openTab(event, 'TabActualizar')">Actualizar usuario</button>
+</div>
+
+<!-- Tab content -->
+<div id="TabLista" class="tabcontent">
+  <dl id="OpcionesLista" class="border_white">
+    <div class="gradient2">
+      <dt class="border_black gradient1" style="z-index: 1" >Opciones</dt>
+      <br>
+      <dd>
+        <div class="border_white" style="width:auto; height:75px; padding: 0px;position: relative;"> 
+          <span>
+            <button class="border_white gradient1" onclick="ImportarLista()">Importar</button>
+          </span>
+
+          <span>
+            <button class="border_white gradient1" onclick="ExportarLista()">Exportar</button>
+          </span>
+
+          <span>Orden =
+            <button class="border_white gradient1" id="Orden" onclick="BotonOrden()">A>Z</button>
+          </span>
+
+          <span>
+            <button class="border_white gradient1" onclick="CrearLista()">Actualizar Lista</button>
+          </span>
+
+        </div>
+      </dd>
+    </div>
+  </dl>
+  <dl id="Lista" style="margin: 0px;"></dl>
+</div>
+
+<div id="TabAñadir" class="tabcontent">
+  <dl id="Añadir" class="border_white">
+    <div class="gradient2">
+      <dt class="border_black gradient1" style="z-index: 1;height: 30px;" > </dt>
+      <br>
+      <dd>
+        <div class="border_white" style="width:auto;height:220px;padding: 0px;position: relative;"> 
+
+          <span style="position: absolute;left: 10px; top:0px;">Nombre = 
+            <input  class="gradient2 border_white" style="position: absolute;left: 110px;" type="text" id="CrearNombre" name="CrearNombre"> 
+          </span>
+
+          <span style="position: absolute;left: 380px; top:0px;">Apellido = 
+            <input  class="gradient2 border_white" style="position: absolute;left: 105px;" type="text" id="CrearApellido" name="Apellido"> 
+          </span>
+
+          <span style="position: absolute;left: 10px; top:70px;">Dni = 
+            <input class="gradient2 border_white" style="position: absolute;left: 110px;" type="text" id="CrearDni" name="Dni" value="00.111.222"> 
+          </span>
+
+          <span style="position: absolute;left: 380px; top:70px;"> Celular = 
+            <input  class="gradient2 border_white" style="position: absolute;left: 105px;" type="text" id="CrearCelular" name="Celular" value="2323-123123"> 
+          </span>
+
+          <span style="position: absolute;left:10px; top:140px;">Entradas = 
+            <input  class="gradient2 border_white" style="position: absolute;left: 110px;" id="CrearEntradas" type="number" name="Entradas" value="0">
+          </span>
+
+          <span style="position: absolute;left: 575px; top:140px;">
+            <button class="border_white gradient1" onclick="CrearUsuario('', '', '', '', '', 1)">Crear Usuario</button>
+          </span>
+        </div>
+      </dd>
+    </div>
+  </dl>
+</div>
+
+<div id="TabEliminar" class="tabcontent">
+  <br>
+  <dl id="Eliminar" class="border_white">
+    <div class="gradient2">
+      <dt class="border_black gradient1" style="z-index: 1;height: 30px;" > </dt>
+ 
+      <dd>
+        <label style="margin-left: 10px;margin-bottom: 10px;margin-top: 30px; " for="UsuarioEliminar">Usuario = </label>
+
+        <select class="gradient1 border_white" style="margin-left: 13px;width: 230px;" name="UsuarioEliminar" id="UsuarioEliminar" onchange="EliminarActualizarDatos()">
+
+        </select>
+
+
+          <button class="border_white gradient1" style="height: 30px;font-size: small;text-align: center; vertical-align: middle; line-height: normal;" onclick="EliminarActualizarLista()">Actualizar</button>
+
+        <div class="border_white" style="width:auto;height:220px;padding: 0px;position: relative;"> 
+
+          <span style="position: absolute;left: 10px; top:0px;">Nombre = 
+            <input disabled  class="gradient2 border_white" style="position: absolute;left: 110px;" type="text" id="EliminarNombre" name="EliminarNombre"> 
+          </span>
+
+          <span style="position: absolute;left: 380px; top:0px;">Apellido = 
+            <input disabled class="gradient2 border_white" style="position: absolute;left: 105px;" type="text" id="EliminarApellido" name="EliminarApellido"> 
+          </span>
+
+          <span style="position: absolute;left: 10px; top:70px;">Dni = 
+            <input disabled class="gradient2 border_white" style="position: absolute;left: 110px;" type="text" id="EliminarDni" name="EliminarDni" value="00.111.222"> 
+          </span>
+
+          <span style="position: absolute;left: 380px; top:70px;"> Celular = 
+            <input disabled class="gradient2 border_white" style="position: absolute;left: 105px;" type="text" id="EliminarCelular" name="EliminarCelular" value="2323-123123"> 
+          </span>
+
+          <span style="position: absolute;left:10px; top:140px;">Entradas = 
+            <input disabled class="gradient2 border_white" style="position: absolute;left: 110px;" id="EliminarEntradas" type="number" name="EliminarEntradas" value="0">
+          </span>
+
+          <span style="position: absolute;left: 485px; top:140px;">
+            <button disable class="border_white gradient1" onclick="EliminarBotonBorrar()">Eliminar Usuario</button>
+          </span>
+        </div>
+      </dd>
+    </div>
+  </dl>
+</div>
+
+<div id="TabActualizar" class="tabcontent">
+  <br>
+  <dl id="Actualizar" class="border_white">
+    <div class="gradient2">
+      <dt class="border_black gradient1" style="z-index: 1;height: 30px;" > </dt>
+ 
+      <dd>
+        <label style="margin-left: 10px;margin-bottom: 10px;margin-top: 30px; " for="UsuarioActualizar">Usuario = </label>
+
+        <select class="gradient1 border_white" style="margin-left: 13px;width: 230px;" name="UsuarioActualizar" id="UsuarioActualizar" onchange="ActualizarActualizarDatos()">
+
+        </select>
+
+
+        <button class="border_white gradient1" style="height: 30px;font-size: small;text-align: center; vertical-align: middle; line-height: normal;" onclick="ActualizarActualizarLista()">Actualizar</button>
+
+        <div class="border_white" style="width:auto;height:220px;padding: 0px;position: relative;"> 
+
+    
+          <select class="gradient1 border_white" style="margin-left: 120px;width: 230px;" name="ActualizarDatoSeleccion" id="ActualizarDatoSeleccion" onchange="ActualizarActualizarDatos()">
+            <option value="Nombre">Nombre</option>
+            <option value="Apellido">Apellido</option>
+            <option value="Dni">Dni</option>
+            <option value="Celular">Celular</option>
+            <option value="Entradas">Entradas</option>
+          </select>
+          <br>
+          <div style="margin-left: 13px;margin-top: 30px;">
+          <span  id="ActualizarDatoSpan">Datos = 
+            <input disabled  class="gradient2 border_white" type="text" id="ActualizarDatoOriginal" name="ActualizarDatoOriginal"> 
+          </span>
+
+          <span > =>  
+            <input class="gradient2 border_white" type="text" id="ActualizarDatoNuevo" name="ActualizarDatoNuevo"> 
+          </span>
+        </div>
+
+          <span style="position: absolute;left: 485px; top:140px;">
+            <button disable class="border_white gradient1" onclick="ActualizarBoton()">Actualizar Usuario</button>
+          </span>
+        </div>
+      </dd>
+    </div>
+  </dl>
+</div>
+
+
+
+  
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+body {
+ background:  linear-gradient(217deg, rgb(143 143 143 / 80%), rgba(255,0,0,0) 70.71%),
+              linear-gradient(127deg, rgb(50 50 50 / 80%), rgba(0,255,0,0) 70.71%),
+              linear-gradient(336deg, rgb(0 0 0 / 80%), rgba(0,0,255,0) 70.71%);
+}
+
+.gradient1{
+  background: linear-gradient(45deg, rgb(255 129 0), #64ff71)
+}
+.gradient2{
+  background: linear-gradient(77deg, white, grey 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+dl > div {
+  background: #FFF;
+  padding: 24px 0 0 0;
+
+}
+
+dt {
+  background: #B8C1C8;
+  border-bottom: 1px solid #989EA4;
+  border-top: 1px solid #717D85;
+  color: #FFF;
+  font: bold 18px/21px Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 2px 0 0 12px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+}
+
+dd {
+  font: bold 20px/45px Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0 0 0 12px;
+  white-space: nowrap;
+}
+
+dd + dd {
+  border-top: 5px solid #545454a3;
+}
+
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #545454a3;
+  background-color: #61646a;
+}
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  background: linear-gradient(to right,rgb(255 0 119 / 0%), #ffffff1f)
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+  background: linear-gradient(to right,rgb(255 255 255 / 42%), #ffffffb5)
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  background: linear-gradient(217deg, rgb(143 143 143 / 80%), rgba(255,0,0,0) 70.71%),
+              linear-gradient(127deg, rgb(50 50 50 / 80%), rgba(0,255,0,0) 70.71%),
+              linear-gradient(336deg, rgb(0 0 0 / 80%), rgba(0,0,255,0) 70.71%);
+
+}
+
+.border_white{
+  text-shadow:
+    1px 1px #fff,
+   -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+   -1px 1px 0 #fff;
+}
+
+.border_black{
+  text-shadow:
+    1px 1px rgb(0, 0, 0),
+   -1px -1px 0 rgb(0, 0, 0),
+    1px -1px 0 rgb(0, 0, 0),
+   -1px 1px 0 rgb(0, 0, 0);
+}
